@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "distroy": "docker stop mysql-wordpress-playground ; docker stop wordpress-playground ; docker rm mysql-wordpress-playground ; docker rm wordpress-playground",
+    "init": "docker run --name mysql-wordpress-playground -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7 && sleep 30 && docker run --name wordpress-playground --link mysql-wordpress-playground:mysql  -p 8080:80 -d wordpress",
+    "export": "docker cp wordpress-playground:/var/www/html/wp-content wp-content && docker exec -i mysql-wordpress-playground mysqldump -uroot -proot --all-databases > dump.sql",
+    "import": "docker cp wp-content wordpress-playground:/var/www/html/wp-content && docker exec -i mysql-wordpress-playground mysql -uroot -proot < dump.sql"
+  }
+}
