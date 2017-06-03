@@ -1,21 +1,17 @@
 # static-wordpress-template
 
-    This is a wordpress starter project for javascript developers. 
-
-requirements
-- Docker
-    - https://hub.docker.com/_/wordpress/
-    - https://hub.docker.com/_/mysql/
-- npm
-
-
-Start the server at http://localhost:8080
+Build a wordpress images with the zip extension
 ```
-npm run init
+docker build -t wordpress-zip .
 ```
 
 
+start
 ```
-username is "username" 
-password is "password"
+docker-compose up -d
+```
+
+stop
+```
+docker-compose down
 ```
