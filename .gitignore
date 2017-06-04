@@ -1,3 +1,4 @@
 html/
 mysql/
 dist/
+dump.sql
