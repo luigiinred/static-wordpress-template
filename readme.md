@@ -1,5 +1,14 @@
 # static-wordpress-template
 
+
+
+```
+username: wordpress
+password: wordpress
+```
+
+
+
 ## Requirements
 
 - docker 
@@ -30,25 +39,26 @@ docker-compose down
 
 export
 ```
-docker exec -i mysql-wordpress-playground mysqldump -uroot -proot --all-databases > dump.sql
+docker exec -i staticwordpresstemplate_db_1 mysqldump -uroot -psomewordpress --all-databases > dump.sql
 ```
 
 
 import 
 ```
-docker exec -i mysql-wordpress-playground mysql -uroot -proot < dump.sql
+docker exec -i staticwordpresstemplate_db_1 mysql -uroot -psomewordpress < dump.sql
 ```
 
 ## Building Static Site
 
 Convert to static site (docker container must be running)
 ```
-wget -P ./dist -mpck --user-agent="" -e robots=off  -E  http://localhost:8000/
+wget -k -K  -E -r -l 10 -p -N -F -nH -P ./docs/ -mpck --user-agent="" -e robots=off  -E  http://localhost:8000/
 ```
 
 ## Deploy
 
 ### Github pages
- todo
-
+```
+./deploy.zsh
+```
 
